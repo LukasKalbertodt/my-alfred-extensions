@@ -9,13 +9,12 @@
 
 import os
 import unicodedata
-from albertv0 import *
+from albert import *
 
-__iid__ = "PythonInterface/v0.2"
-__prettyname__ = "Unicode Search"
-__version__ = "1.0"
-__author__ = "Lukas Kalbertodt"
-__trigger__ = "uni"
+__title__ = "Unicode Search"
+__version__ = "0.4.2"
+__authors__ = "Lukas Kalbertodt"
+__triggers__ = "uni"
 
 
 iconPath = os.path.dirname(__file__)+"/unicode-logo.svg"
@@ -69,7 +68,7 @@ def handleQuery(query):
                     break
 
             if found:
-                item = Item(id=__prettyname__, completion=query.rawString)
+                item = Item(id=__title__, completion=query.rawString)
 
                 # If the character is a combining character, we check if the
                 # user requested us to show combining characters. If yes, add a
@@ -91,7 +90,7 @@ def handleQuery(query):
 
     # You never know what could go wrong
     except Exception as e:
-        item = Item(id=__prettyname__, completion=query.rawString)
+        item = Item(id=__title__, completion=query.rawString)
         item.text = e.__class__.__name__
         item.subtext = str(e)
         return item

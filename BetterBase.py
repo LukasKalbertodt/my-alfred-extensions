@@ -4,11 +4,10 @@
    use a prefix, the number is interpreted as decimal. For other input bases,
    use the prefixes '0b' for binary, '0o' for octal and '0x' for hexadecimal."""
 
-from albertv0 import *
+from albert import *
 
-__iid__ = "PythonInterface/v0.2"
-__prettyname__ = "BetterBase"
-__version__ = "1.0"
+__title__ = "BetterBase"
+__version__ = "0.4.2"
 __author__ = "Lukas Kalbertodt"
 
 def handleQuery(query):
@@ -45,7 +44,7 @@ def handleQuery(query):
                 text = "0"
 
             # Add item
-            item = Item(id=__prettyname__, completion=query.rawString)
+            item = Item(id=__title__, completion=query.rawString)
             item.text = prefix + text
             item.subtext = subtext
             item.addAction(ClipAction("Copy to clipboard", item.text))
@@ -68,7 +67,7 @@ def handleQuery(query):
 
     # We never know what could go wrong...
     except Exception as e:
-        item = Item(id=__prettyname__, completion=query.rawString)
+        item = Item(id=__title__, completion=query.rawString)
         item.text = e.__class__.__name__
         item.subtext = str(e)
         return item
